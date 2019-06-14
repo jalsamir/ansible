@@ -14,6 +14,7 @@
     - debug: msg="{{mgmtvpc_id}}"
     - name: Management VPC subnet facts
       ec2_vpc_subnet_facts:
+        region: "{{AWSRegion}}"
         filters:
           vpc-id: "{{ mgmtvpc_id }}"
       register: mgmtvpc_subnet_facts
