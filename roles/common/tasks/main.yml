@@ -1,7 +1,7 @@
 ---
     - name: Mgmt VPC Name
       set_fact:
-         mgmtvpcname: "{{MGMTEnv}}-VPC"
+         mgmtvpcname: "{{MGMTEnv}}_vpc"
     - debug: msg="{{mgmtvpcname}}"
     - name: Find Management VPC
       ec2_vpc_net_facts:
