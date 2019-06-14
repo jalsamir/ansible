@@ -1,0 +1,7 @@
+---
+# file: webservers.yml
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - common

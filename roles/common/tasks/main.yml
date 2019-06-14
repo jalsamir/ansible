@@ -1,0 +1,20 @@
+---
+    - name: Mgmt VPC Name
+      set_fact:
+         mgmtvpcname: "{{MGMTEnv}}-VPC"
+    - debug: msg="{{mgmtvpcname}}"
+    - name: Find Management VPC
+      ec2_vpc_net_facts:
+        filters:
+          "tag:Name": "{{mgmtvpcname}}"
+      register: mgmtvpc
+    - name: Get Management VPC ID
+      set_fact:
+        mgmtvpc_id: "{{ mgmtvpc.vpcs[0].vpc_id }}"
+    - debug: msg="{{mgmtvpc_id}}"
+    - name: Management VPC subnet facts
+      ec2_vpc_subnet_facts:
+        filters:
+          vpc-id: "{{ mgmtvpc_id }}"
+      register: mgmtvpc_subnet_facts
+    - debug: msg="{{mgmtvpc_subnet_facts}}"
