@@ -5,6 +5,7 @@
     - debug: msg="{{mgmtvpcname}}"
     - name: Find Management VPC
       ec2_vpc_net_facts:
+        region: "{{AWSRegion}}"
         filters:
           "tag:Name": "{{mgmtvpcname}}"
       register: mgmtvpc
